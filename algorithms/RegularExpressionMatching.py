@@ -6,6 +6,7 @@ class Solution(object):
         :type p: str
         :rtype: bool
         """
+        
         M = [([False] * (len(p) + 1)) for i in range(len(s) + 1)]
         M[0][0] = True
         for i in range(len(p)):
