@@ -11,14 +11,14 @@ class Solution(object):
             return res
         digitCorString = {'2': "abc", '3': "def", '4': "ghi", '5': "jkl", '6': "mno", '7': "pqrs", '8': "tuv",
                           '9': "wxyz"}
-        lastDigitLetterCombi = digitCorString[digits[digitsLength - 1]]
-        for i in range(len(lastDigitLetterCombi)):
-            res.append(lastDigitLetterCombi[i])
-        for i in range(digitsLength - 2, -1, -1):
-            letterCombi = digitCorString[digits[i]]
-            resLength = len(res)
-            for j in range(resLength):
-                temp = res.pop(0)
-                for c in letterCombi:
-                    res.append(c + temp)
+
+        def backTracking(combination, index):
+            if index == digitsLength:
+                res.append(combination)
+                return
+            char2int = digits[index]
+            for c in digitCorString[char2int]:
+                backTracking(combination + c, index + 1)
+
+        backTracking('', 0)
         return res
