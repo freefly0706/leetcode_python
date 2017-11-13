@@ -6,12 +6,11 @@ class Solution(object):
         :type needle: str
         :rtype: int
         """
-        needleLength = len(needle)
-        if not needleLength:
+        if not needle:
             return 0
-        haystackLength = len(haystack)
-        for i in range(needleLength - 1, haystackLength):
-            if haystack[i] == needle[needleLength - 1]:
-                if haystack[i + 1 - needleLength:i + 1] == needle:
-                    return i + 1 - needleLength
+        needleLength = len(needle)
+        for i in range(len(haystack) - needleLength + 1):
+            if haystack[i] == needle[0]:
+                if haystack[i:i + needleLength] == needle:
+                    return i
         return -1
