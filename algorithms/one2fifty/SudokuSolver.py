@@ -5,22 +5,22 @@ class Solution(object):
         :type board: List[List[str]]
         :rtype: void Do not return anything, modify board in-place instead.
         """
-        Solution().backTracking(board, 0, 0, len(board))
+        self.backTracking(board, 0, 0, len(board))
 
     def backTracking(self, board, row, column, n):
         if column == n:
-            return Solution().backTracking(board, row + 1, 0, n)
+            return self.backTracking(board, row + 1, 0, n)
         if row == n:
             return True
         if board[row][column] == '.':
             for num in range(1, 10):
-                if Solution().isValid(board, row, column, str(num), n):
+                if self.isValid(board, row, column, str(num), n):
                     board[row][column] = str(num)
-                    if Solution().backTracking(board, row, column + 1, n):
+                    if self.backTracking(board, row, column + 1, n):
                         return True
                     board[row][column] = '.'
             return False
-        return Solution().backTracking(board, row, column + 1, n)
+        return self.backTracking(board, row, column + 1, n)
 
     def isValid(self, board, row, column, num, n):
         for i in range(n):

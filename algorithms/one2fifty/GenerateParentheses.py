@@ -14,6 +14,6 @@ class Solution(object):
             res.append(pair)
             return
         if left < n:
-            Solution().backTracking(pair + '(', n, left + 1, right, res)
+            self.backTracking(pair + '(', n, left + 1, right, res)
         if right < left:
-            Solution().backTracking(pair + ')', n, left, right + 1, res)
+            self.backTracking(pair + ')', n, left, right + 1, res)
