@@ -11,8 +11,8 @@ class Solution(object):
         while left < right:
             min_bound = min(height[left], height[right])
             max_value = max(max_value, min_bound * (right - left))
-            while left < len(height) and height[left] <= min_bound:
+            while left < right and height[left] <= min_bound:
                 left += 1
-            while right > 0 and height[right] <= min_bound:
+            while right > left and height[right] <= min_bound:
                 right -= 1
         return max_value
